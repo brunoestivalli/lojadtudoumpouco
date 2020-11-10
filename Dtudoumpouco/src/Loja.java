@@ -1,6 +1,8 @@
+import java.util.Scanner;
 
 public class Loja {
 	public static void main(String[] args) {
+		Scanner read = new Scanner (System.in);
 		// Declaração das váriaveis
 				String produtos[] = {"Arroz de 5Kg","Arroz de 1Kg","Feijão de 1kg","Farofa de 500g","Nescau de 400g","Peça de picanha 1kg","Cartela com 12 Ovos",
 						   			"Cartela com 24 Ovos", "Coca-Cola 2L", "Coca-Cola 600ml"};
@@ -37,7 +39,7 @@ public class Loja {
 				System.out.println("_________________________________________________________");
 				
 				System.out.println("\n\nDigite o código do produto que deseja comprar: ");
-					compraProduto = entrada.nextInt();
+					compraProduto = read.nextInt();
 					
 				if(compraProduto >= 0 && compraProduto <= 9)
 				{
@@ -51,7 +53,7 @@ public class Loja {
 				}
 				
 				System.out.println("Quantos produtos deseja comprar: ");
-					qntProduto = entrada.nextInt();
+					qntProduto = read.nextInt();
 				System.out.println("\n" + produtos[compraProduto]);
 				
 				// Verificação se tem produto dentro no estoque
@@ -67,13 +69,14 @@ public class Loja {
 				
 				// Se deseja fazer outra compra
 				System.out.println("Desejar continuar comprando S/N: ");
-					continua = entrada.next().toUpperCase().charAt(0);
+					continua = read.next().toUpperCase().charAt(0);
 				
 				if(continua == 'S')
 				{
 					confirmacao = true;
 				}
-				else {
+				else
+				{
 					confirmacao = false;
 				}
 				
@@ -154,69 +157,94 @@ public class Loja {
 							System.out.println("---D'tudo um Pouco---\n\n\n");
 				}
 				System.out.println("    NOTA FISCAL;/n/n");
-				if(pagamento == 1) {
-					if(contador==0) {
+				if(pagamento == 1) 
+				{
+					
+					if(contador==0) 
+					{
 						System.out.println(produtos[carrinho[0]]);
 						System.out.println("/n"+k+"/n");
 						System.out.println("/nPreço: "+z+"R$");
-					}else {
-						for (i = 0; i<contador;i++) {
+					}
+					else 
+					{
+						for (i = 0; i<contador;i++)
+						{
 							System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
 						}
 						z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
 						System.out.println("/n"+k+"/n");
 						System.out.println("/nForma de pagamento: "+l);
-						System.out.println("/nPreço Total: "+Math.round(z,2)+"R$");
-						}
-					}else if(pagamento == 2) {
-						if (contador ==0) {
+						System.out.println("/nPreço Total: "+Math.round(z)+"R$");
+	
+					}
+					else if(pagamento == 2)
+					{
+						if (contador ==0)
+						{
 							System.out.print(produtos[carrinho[0]]);
 							System.out.print("\nQuantidade: "+qntProduto);
 							System.out.println("/n"+j+"/n");
 							System.out.println("/nForma de Pagamento: "+c);
 							System.out.println("/nPreço: "+z+"R$");		
-						}else {
-							for(i=0;i<contador;i++) {
+						}
+						else
+						{
+							for(i=0;i<contador;i++)
+							{
 								System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
 							}
 							z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
 							System.out.println("/n"+j+"/n");
 							System.out.println("/nForma de pagamento: "+c);
-							System.out.println("/nPreço Total: "+Math.round(z,2)+"R$");
+							System.out.println("/nPreço Total: "+Math.round(z)+"R$");
 						}
-						
-				}else if(pagamento == 3) {
-					if(parcela == 2) {
-						if (contador == 0) {
+					}
+				}
+				else if(pagamento == 3) 
+				{
+					if(parcela == 2) 
+					{
+						if (contador == 0)
+						{
 							System.out.print(produtos[carrinho[0]]);
 							System.out.print("\nQuantidade: "+qntProduto);
 							System.out.println("/n"+t+"/n");
 							System.out.println("/nForma de Pagamento: "+m);
 							System.out.println("/nPreço: "+z+"R$");
-						}else {
-							for (i=0;i<=contador;i++) {
+						}
+						else 
+						{
+							for (i=0;i<=contador;i++) 
+							{
 								System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
 							}
 							z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
 							System.out.println("/n"+t+"/n");
 							System.out.println("/nForma de pagamento: "+m);
-							System.out.println("/nPreço Total: "+Math.round(z,2)+"R$");
-						}else if(parcela==3) {
-							if(contador==0) {
+							System.out.println("/nPreço Total: "+Math.round(z)+"R$");
+						}
+						else if(parcela==3) 
+						{
+							if(contador==0)
+							{
 								System.out.print(produtos[carrinho[0]]);
 								System.out.print("\nQuantidade: "+qntProduto);
 								System.out.println("/n"+w+"/n");
 								System.out.println("/nForma de Pagamento: "+r);
 								System.out.println("/nPreço: "+z+"R$");
-							}else {
-								for(i=0;i<=contador;i++) {
+							}
+							else
+							{
+								for(i=0;i<=contador;i++) 
+								{
 									System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
 								}
 								z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
 								System.out.println("/n"+w+"/n");
 								System.out.println("/nForma de pagamento: "+r);
-								System.out.println("/nPreço por parcela: "+Math.round((z/3),2)+"R$");
-								System.out.println("/nPreço total: "+Math.round(z,2)+"R$");
+								System.out.println("/nPreço por parcela: "+(z/3)+"R$");
+								System.out.println("/nPreço total: "+Math.round(z)+"R$");
 							}
 						}
 					}
@@ -224,11 +252,7 @@ public class Loja {
 				
 				
 				
-					
-				}
-		}
-	}
-				
+		
 				
 				
 	}
