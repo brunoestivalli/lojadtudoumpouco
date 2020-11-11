@@ -18,12 +18,12 @@ public class Loja {
 				int compraProduto=0;
 				int contador = 0;
 				int i = 0;
-				int pagamento;
+				int pagamento=0;
 				int parcela = 0; 
 				double precoTotal = 0.0;
 				double z=0.0;
 				
-				String c, m, r, l, k, j, t, w;
+				String c="", m="", r="", l="", k="", j="", t="", w="";
 				char continua;
 				boolean confirmacao = true;
 				boolean validacao = true;
@@ -156,27 +156,29 @@ public class Loja {
 							
 							System.out.println("---D'tudo um Pouco---\n\n\n");
 				}
-				System.out.println("    NOTA FISCAL;/n/n");
-				if(pagamento == 1) 
+				do 
 				{
-					
-					if(contador==0) 
+					System.out.println("    NOTA FISCAL;/n/n");
+					if(pagamento == 1) 
 					{
-						System.out.println(produtos[carrinho[0]]);
-						System.out.println("/n"+k+"/n");
-						System.out.println("/nPreço: "+z+"R$");
-					}
-					else 
-					{
-						for (i = 0; i<contador;i++)
+						if(contador==0) 
 						{
-							System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
+							System.out.println(produtos[carrinho[0]]);
+							System.out.println("/n"+k+"/n");
+							System.out.println("/nPreço: "+z+"R$");
 						}
-						z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
-						System.out.println("/n"+k+"/n");
-						System.out.println("/nForma de pagamento: "+l);
-						System.out.println("/nPreço Total: "+Math.round(z)+"R$");
-	
+						else 
+						{
+							for (i = 0; i<contador;i++)
+							{
+								System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
+							}
+							z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
+							System.out.println("/n"+k+"/n");
+							System.out.println("/nForma de pagamento: "+l);
+							System.out.println("/nPreço Total: "+Math.round(z)+"R$");
+				
+						}
 					}
 					else if(pagamento == 2)
 					{
@@ -200,60 +202,55 @@ public class Loja {
 							System.out.println("/nPreço Total: "+Math.round(z)+"R$");
 						}
 					}
-				}
-				else if(pagamento == 3) 
-				{
-					if(parcela == 2) 
+					else if(pagamento == 3) 
 					{
-						if (contador == 0)
+						if(parcela == 2) 
 						{
-							System.out.print(produtos[carrinho[0]]);
-							System.out.print("\nQuantidade: "+qntProduto);
-							System.out.println("/n"+t+"/n");
-							System.out.println("/nForma de Pagamento: "+m);
-							System.out.println("/nPreço: "+z+"R$");
-						}
-						else 
-						{
-							for (i=0;i<=contador;i++) 
-							{
-								System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
-							}
-							z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
-							System.out.println("/n"+t+"/n");
-							System.out.println("/nForma de pagamento: "+m);
-							System.out.println("/nPreço Total: "+Math.round(z)+"R$");
-						}
-						else if(parcela==3) 
-						{
-							if(contador==0)
+							if (contador == 0)
 							{
 								System.out.print(produtos[carrinho[0]]);
 								System.out.print("\nQuantidade: "+qntProduto);
-								System.out.println("/n"+w+"/n");
-								System.out.println("/nForma de Pagamento: "+r);
+								System.out.println("/n"+t+"/n");
+								System.out.println("/nForma de Pagamento: "+m);
 								System.out.println("/nPreço: "+z+"R$");
 							}
-							else
+							else 
 							{
-								for(i=0;i<=contador;i++) 
+								for (i=0;i<=contador;i++) 
 								{
 									System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
 								}
 								z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
-								System.out.println("/n"+w+"/n");
-								System.out.println("/nForma de pagamento: "+r);
-								System.out.println("/nPreço por parcela: "+(z/3)+"R$");
-								System.out.println("/nPreço total: "+Math.round(z)+"R$");
+								System.out.println("/n"+t+"/n");
+								System.out.println("/nForma de pagamento: "+m);
+								System.out.println("/nPreço Total: "+Math.round(z)+"R$");
 							}
 						}
 					}
-				}	while(confirmacao == true);
-				
-				
-				
-		
-				
-				
+					else if(parcela==3) 
+					{
+						if(contador==0)
+						{
+							System.out.print(produtos[carrinho[0]]);
+							System.out.print("\nQuantidade: "+qntProduto);
+							System.out.println("/n"+w+"/n");
+							System.out.println("/nForma de Pagamento: "+r);
+							System.out.println("/nPreço: "+z+"R$");
+						}
+						else
+						{
+							for(i=0;i<=contador;i++) 
+							{
+								System.out.println(produtos[carrinho[i]]+" - "+carrinhoPreco[i]+" Uni/n");
+							}
+							z=z+precoProd[carrinho[i]]*carrinhoPreco[i];
+							System.out.println("/n"+w+"/n");
+							System.out.println("/nForma de pagamento: "+r);
+							System.out.println("/nPreço por parcela: "+(z/3)+"R$");
+							System.out.println("/nPreço total: "+Math.round(z)+"R$");
+						}
+					}
+						
+				}	while(confirmacao == true);		
 	}
 }
